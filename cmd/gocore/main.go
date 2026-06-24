@@ -18,6 +18,9 @@ func main() {
 	handler := handler.NewEmployeeHandler(service)
 
 	e := echo.New()
+	e.GET("/", func(c echo.Context) error {
+		return c.JSON(200, map[string]string{"status": "ok"})
+	})
 	handler.RegisterRoutes(e)
 
 	port := os.Getenv("PORT")
